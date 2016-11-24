@@ -11,11 +11,11 @@ function Cache (getAfterCache, timeOut) {
 }
 Cache.prototype = {
   get () {
-    return new Promise((resolve) => {
+    return new Promise(resolve => {
       var cache = this.cache
-      if (cache.promise && new Date() - cache.createTime < this.timeOut) return resolve(cache.promise)
-      var promise = this.getAfterCache().then((rs) => {
-        this.cache.createTime = new Date()
+      if (cache.promise && (this.timeOut === 0 || new Date() - cache.createTime < this.timeOut)) return resolve(cache.promise)
+      var promise = this.getAfterCache().then(rs => {
+        if (this.timeOut !== 0) this.cache.createTime = new Date()
         return rs
       })
       this.set(promise)

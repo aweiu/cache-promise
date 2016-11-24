@@ -12,19 +12,21 @@ function Cache(getAfterCache, timeOut) {
   this.timeOut = timeOut;
 }
 Cache.prototype = {
-  get() {
-    return new Promise(resolve => {
-      var cache = this.cache;
-      if (cache.promise && new Date() - cache.createTime < this.timeOut) return resolve(cache.promise);
-      var promise = this.getAfterCache().then(rs => {
-        this.cache.createTime = new Date();
+  get: function get() {
+    var _this = this;
+
+    return new Promise(function (resolve) {
+      var cache = _this.cache;
+      if (cache.promise && (_this.timeOut === 0 || new Date() - cache.createTime < _this.timeOut)) return resolve(cache.promise);
+      var promise = _this.getAfterCache().then(function (rs) {
+        if (_this.timeOut !== 0) _this.cache.createTime = new Date();
         return rs;
       });
-      this.set(promise);
+      _this.set(promise);
       resolve(promise);
     });
   },
-  set(cachePromise) {
+  set: function set(cachePromise) {
     this.cache.promise = cachePromise;
     this.cache.createTime = new Date();
   }
