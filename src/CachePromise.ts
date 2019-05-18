@@ -21,8 +21,7 @@ export default class CachePromise<T = any> {
     this.lastTime = new Date().getTime()
     this.cache = promiseFun()
     try {
-      const rs = await this.cache
-      return rs
+      return await this.cache
     } catch (e) {
       this.cache = undefined
       throw e
