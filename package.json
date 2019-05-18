@@ -1,6 +1,6 @@
 {
   "name": "cache-promise",
-  "version": "0.0.4",
+  "version": "1.0.0",
   "description": "用于缓存promise对象",
   "keywords": [
     "cache",
@@ -10,10 +10,18 @@
   "author": {
     "name": "余阿伟"
   },
-  "main": "cache-promise.js",
+  "main": "dist/CachePromise.js",
+  "typings": "dist/CachePromise.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/aweiu/cache-promise.git"
   },
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "prettier": "^1.17.0",
+    "tslint": "^5.16.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-plugin-prettier": "^2.0.1",
+    "typescript": "^3.4.5"
+  }
 }
