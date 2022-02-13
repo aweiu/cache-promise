@@ -1,6 +1,6 @@
 {
   "name": "cache-promise",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "用于缓存 promise 对象",
   "keywords": [
     "cache",
