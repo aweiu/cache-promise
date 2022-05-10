@@ -4,7 +4,7 @@ class CachePromise<T> {
   private expires = 0
   private promiseFun: () => Promise<T>
 
-  constructor(promiseFun: CachePromise<T>['promiseFun'], expires: number = 0) {
+  constructor(promiseFun: () => Promise<T>, expires: number = 0) {
     this.promiseFun = promiseFun
     this.expires = expires
   }
